@@ -1,0 +1,21 @@
+.Tile {
+    background-color: #121212;
+    color: #ffffff;
+    width: 90%;
+    padding: 2%;
+    border-radius: 20px;
+    -webkit-box-shadow: 1px 0px 11px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 1px 0px 11px 0px rgba(0,0,0,0.75);
+    box-shadow: 1px 0px 11px 0px rgba(0,0,0,0.75);
+}
+
+.TileHeader{
+    text-align: left;
+    text-transform: capitalize;
+    font-size: 0.6rem;
+}
+
+.TileContent{
+    text-align: left;
+    font-size: 0.9rem;
+}
