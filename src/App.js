@@ -1,6 +1,5 @@
 import './App.css';
 import Tile from './components/Tile/Tile';
-import axios from 'axios';
 import { Component } from 'react';
 
 
@@ -19,11 +18,12 @@ class App extends Component{
     return (
       <div className="App">
         <header className="App-header">
-          <ul>
-          {this.state.intervetions.map((d) => {
-            return <Tile type={d.intervencijaVrstaNaziv} time={d.prijavaCas} location={d.obcinaNaziv} content={d.besedilo}></Tile>
-          })}
-          </ul>
+          <h1 id="App-h1">SPIN 112</h1>
+          <div className="App-content">
+            {this.state.intervetions.map((d) => {
+              return <Tile type={d.intervencijaVrstaNaziv} time={d.prijavaCas} location={d.obcinaNaziv} content={d.besedilo}></Tile>
+            })}
+          </div>
         </header>
 
       </div>

@@ -9,3 +9,14 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
+#App-h1{
+  text-align: center;
+}
+
+.App-content{
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+
+}
