@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/spin-react/static/css/main.74cdfc95.chunk.css",
-    "main.js": "/spin-react/static/js/main.ded68210.chunk.js",
-    "main.js.map": "/spin-react/static/js/main.ded68210.chunk.js.map",
+    "main.js": "/spin-react/static/js/main.b77c0d0a.chunk.js",
+    "main.js.map": "/spin-react/static/js/main.b77c0d0a.chunk.js.map",
     "runtime-main.js": "/spin-react/static/js/runtime-main.5e3b6b63.js",
     "runtime-main.js.map": "/spin-react/static/js/runtime-main.5e3b6b63.js.map",
     "static/js/2.44b4e0ad.chunk.js": "/spin-react/static/js/2.44b4e0ad.chunk.js",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.5e3b6b63.js",
     "static/js/2.44b4e0ad.chunk.js",
     "static/css/main.74cdfc95.chunk.css",
-    "static/js/main.ded68210.chunk.js"
+    "static/js/main.b77c0d0a.chunk.js"
   ]
 }
