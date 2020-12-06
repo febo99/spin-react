@@ -7,3 +7,5 @@ This React project is a better visualization tool for current [SPIN](https://spi
 - No dark theme
 - Mobile page is quite laggy
 - Map is not working OK on mobile
+## Link
+https://febo99.github.io/spin-react/
