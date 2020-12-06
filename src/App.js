@@ -1,5 +1,6 @@
 import './App.css';
 import Tile from './components/Tile/Tile';
+import MenuBar from './components/MenuBar/MenuBar';
 import { Component } from 'react';
 
 const formatDate = (data) =>{
@@ -37,6 +38,7 @@ class App extends Component{
       <div className="App">
         <header className="App-header">
           <h1 id="App-h1">SPIN 112</h1>
+          <MenuBar></MenuBar>
           <div className="App-content">
             {this.state.intervetions.map((d) => {
               return <Tile key={d.nastanekCas} type={d.intervencijaVrstaNaziv} 
