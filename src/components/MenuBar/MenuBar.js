@@ -22,7 +22,7 @@ handleClose = () => this.setState({ anchorEl: null})
     return(
       <div className={styles.MenuBar}>
         <AppBar position='static' style={{'backgroundColor':'#121212'}}>
-          <Toolbar color="red">
+          <Toolbar>
             <Button color="inherit" id='municipality' aria-controls="municipality-menu" aria-haspopup="true" onClick={this.handleClick}>Občine</Button>
             <Button color="inherit" id='interventions' aria-controls="interventions-menu" aria-haspopup="true" onClick={this.handleClick}>Intervencije</Button>
             <MenuMunicipalities  anchorEl={anchorEl} handleClose={this.handleClose} muniChange={this.props.muniChange} muniChangeAll={this.props.muniChangeAll} municipalities={this.props.municipalities}></MenuMunicipalities>
