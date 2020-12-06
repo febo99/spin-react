@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/spin-react/static/css/main.fda9464d.chunk.css",
+    "main.css": "/spin-react/static/css/main.1d5dde04.chunk.css",
     "main.js": "/spin-react/static/js/main.4d27161d.chunk.js",
     "main.js.map": "/spin-react/static/js/main.4d27161d.chunk.js.map",
     "runtime-main.js": "/spin-react/static/js/runtime-main.13f13df0.js",
@@ -10,14 +10,14 @@
     "static/js/3.8685723d.chunk.js": "/spin-react/static/js/3.8685723d.chunk.js",
     "static/js/3.8685723d.chunk.js.map": "/spin-react/static/js/3.8685723d.chunk.js.map",
     "index.html": "/spin-react/index.html",
-    "static/css/main.fda9464d.chunk.css.map": "/spin-react/static/css/main.fda9464d.chunk.css.map",
+    "static/css/main.1d5dde04.chunk.css.map": "/spin-react/static/css/main.1d5dde04.chunk.css.map",
     "static/js/2.9f490294.chunk.js.LICENSE.txt": "/spin-react/static/js/2.9f490294.chunk.js.LICENSE.txt",
     "static/media/map.ec4bb89d.svg": "/spin-react/static/media/map.ec4bb89d.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.13f13df0.js",
     "static/js/2.9f490294.chunk.js",
-    "static/css/main.fda9464d.chunk.css",
+    "static/css/main.1d5dde04.chunk.css",
     "static/js/main.4d27161d.chunk.js"
   ]
 }
