@@ -1,1 +1,19 @@
-.MenuMunicipalities {}
+.menuPaper{
+    background-color: #121212;
+}
+.MenuContainer{
+    background-color: #121212;
+}
+.MenuCheckbox{
+    color: white;
+}
+.MenuItem{
+    background-color: #121212;
+    color: white;
+}
+
+.MenuItem:hover{
+    background-color: #000000;
+}
+
+

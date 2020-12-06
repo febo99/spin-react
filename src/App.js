@@ -11,7 +11,6 @@ const formatDate = (data) =>{
   return data;
 }
 
-
 class App extends Component{
   state ={
     intervetions : [],
@@ -33,7 +32,7 @@ class App extends Component{
       apace: true,
       beltinci: true,
       benedikt: true,
-      bistricaObSotli: true,
+      bistricaobsotli: true,
       bled: true,
       bloke: true,
       bohinj: true,
@@ -45,7 +44,7 @@ class App extends Component{
       brezice: true,
       cankova: true,
       celje: true,
-      cerkljeNaGorenjskem: true,
+      cerkljenagorenjskem: true,
       cerknica: true,
       cerkno: true,
       cerkvenjak: true,
@@ -55,32 +54,32 @@ class App extends Component{
       dobje: true,
       dobrepolje: true,
       dobrna: true,
-      dobrovaPolhovGradec: true,
+      dobrovapolhovgradec: true,
       dobrovnik: true,
-      dolPriLjubljani: true,
-      dolenjskeToplice: true,
+      dolpriljubljani: true,
+      dolenjsketoplice: true,
       domzale: true,
       dornava: true,
       dravograd: true,
       duplek: true,
-      gorenjaVasPoljane: true,
+      gorenjavaspoljane: true,
       gorisnica: true,
       gorje: true,
-      gornjaRadgona: true,
-      gornjiGrad: true,
-      gornjiPetrovci: true,
+      gornjaradgona: true,
+      gornjigrad: true,
+      gornjipetrovci: true,
       grad: true,
       grosuplje: true,
       hajdina: true,
       hodos: true,
       horjul: true,
-      hoceSlivnica: true,
+      hoceslivnica: true,
       hrastnik: true,
-      hrpeljeKozina: true,
+      hrpeljekozina: true,
       idrija: true,
       ig: true,
-      ilirskaBistrica: true,
-      ivancnaGorica: true,
+      ilirskabistrica: true,
+      ivancnagorica: true,
       izola: true,
       jesenice: true,
       jezersko: true,
@@ -93,12 +92,12 @@ class App extends Component{
       komen: true,
       komenda: true,
       koper: true,
-      kostanjevicaNaKrki: true,
+      kostanjevicanakrki: true,
       kostel: true,
       kozje: true,
       kocevje: true,
       kranj: true,
-      kranjskaGora: true,
+      kranjskagora: true,
       krizevci: true,
       krsko: true,
       kungota: true,
@@ -110,11 +109,11 @@ class App extends Component{
       ljubljana: true,
       ljubno: true,
       ljutomer: true,
-      logDragomer: true,
+      logdragomer: true,
       logatec: true,
-      lovrencNaPohorju: true,
-      loskaDolina: true,
-      loskiPotok: true,
+      lovrencnapohorju: true,
+      loskadolina: true,
+      loskipotok: true,
       lukovica: true,
       luce: true,
       majsperk: true,
@@ -125,20 +124,20 @@ class App extends Component{
       menges: true,
       metlika: true,
       mezica: true,
-      miklavzNaDravskemPolju: true,
-      mirenKostanjevica: true,
+      miklavznadravskempolju: true,
+      mirenkostanjevica: true,
       mirna: true,
-      mirnaPec: true,
+      mirnapec: true,
       mislinja: true,
-      mokronogTrebelno: true,
-      moravskeToplice: true,
+      mokronogtrebelno: true,
+      moravsketoplice: true,
       moravce: true,
-      murskaSobota: true,
+      murskasobota: true,
       muta: true,
       naklo: true,
       nazarje: true,
-      novaGorica: true,
-      novoMesto: true,
+      novagorica: true,
+      novomesto: true,
       odranci: true,
       oplotnica: true,
       ormoz: true,
@@ -159,49 +158,49 @@ class App extends Component{
       puconci: true,
       radenci: true,
       radece: true,
-      radljeObDravi: true,
+      radljeobdravi: true,
       radovljica: true,
-      ravneNaKoroskem: true,
+      ravnenakoroskem: true,
       razkrizje: true,
       racefram: true,
       rencevogrsko: true,
-      recicaObSavinji: true,
+      recicaobsavinji: true,
       ribnica: true,
-      ribnicaNaPohorju: true,
+      ribnicanapohorju: true,
       rogatec: true,
-      rogaskaSlatina: true,
+      rogaskaslatina: true,
       rogasovci: true,
       ruse: true,
-      selnicaObDravi: true,
+      selnicaobdravi: true,
       semic: true,
       sevnica: true,
       sezana: true,
-      slovenjGradec: true,
-      slovenskaBistrica: true,
-      slovenskeKonjice: true,
+      slovenjgradec: true,
+      slovenskabistrica: true,
+      slovenskekonjice: true,
       sodrazica: true,
       solcava: true,
-      sredisceObDravi: true,
+      sredisceobdravi: true,
       starse: true,
       straza: true,
-      svTrojicaVSlovGoricah: true,
-      svetaAna: true,
-      svetiAndrazVSlovGoricah: true,
-      svetiJurijObScavnici: true,
-      svetiJurijVSlovGoricah: true,
-      svetiTomaz: true,
+      svtrojicavslovgoricah: true,
+      svetaana: true,
+      svetiandrazvslovgoricah: true,
+      svetijurijobscavnici: true,
+      svetijurijvslovgoricah: true,
+      svetitomaz: true,
       tabor: true,
       tisina: true,
       tolmin: true,
       trbovlje: true,
       trebnje: true,
-      trnovskaVas: true,
+      trnovskavas: true,
       trzin: true,
       trzic: true,
       turnisce: true,
       velenje: true,
-      velikaPolana: true,
-      velikeLasce: true,
+      velikapolana: true,
+      velikelasce: true,
       verzej: true,
       videm: true,
       vipava: true,
@@ -211,11 +210,11 @@ class App extends Component{
       vransko: true,
       vrhnika: true,
       vuzenica: true,
-      zagorjeObSavi: true,
+      zagorjeobsavi: true,
       zavrc: true,
       zrece: true,
       crensovci: true,
-      crnaNaKoroskem: true,
+      crnanakoroskem: true,
       crnomelj: true,
       salovci: true,
       sempetervrtojba: true,
@@ -225,12 +224,12 @@ class App extends Component{
       sentrupert: true,
       sencur: true,
       skocjan: true,
-      skofjaLoka: true,
+      skofjaloka: true,
       skofljica: true,
-      smarjePriJelsah: true,
-      smarjeskeToplice: true,
-      smartnoObPaki: true,
-      smartnoPriLitiji: true,
+      smarjeprijelsah: true,
+      smarjesketoplice: true,
+      smartnoobpaki: true,
+      smartnoprilitiji: true,
       sostanj: true,
       store: true,
       zalec: true,
@@ -258,6 +257,7 @@ class App extends Component{
   };
   
   update(){ this.handleChange.bind(this)};
+
   componentDidMount(){
     const api = 'http://spin3.sos112.si/javno/assets/data/lokacija.json';
     const proxy = 'https://cors-anywhere.herokuapp.com/';
@@ -274,9 +274,11 @@ class App extends Component{
       });
     }, 60000);
   }
+
   componentWillUnmount(){
     clearInterval(this.interval);
   }
+
   render(){
     return (
       <div className="App">
@@ -285,12 +287,16 @@ class App extends Component{
           <MenuBar municipalities={this.state.municipalitiesFilter} muniChange={this.handleMuniChange.bind(this)} muniChangeAll={this.handleMuniChangeAll.bind(this)} intervetionsType={this.state.intervetionsFilter}></MenuBar>
           <div className="App-content">
             {this.state.intervetions.map((d) => {
-              return <Tile key={d.nastanekCas} type={d.intervencijaVrstaNaziv} 
-              time={d.nastanekCas} 
-              location={d.obcinaNaziv}
-              content={d.besedilo}
-              mapLink={d.map}></Tile>
-            })}
+              let muni = String(d.obcinaNaziv);
+              muni = muni.toLowerCase().replace(/\s/g, "",).replace(/\./g,"").replace(/\-/g,"").replace("š",'s').replace("č",'c').replace("ž",'z');
+              if(this.state.municipalitiesFilter[muni]){
+                return <Tile key={d.nastanekCas} type={d.intervencijaVrstaNaziv} 
+                time={d.nastanekCas} 
+                location={d.obcinaNaziv}
+                content={d.besedilo}
+                mapLink={d.map}></Tile>
+              }})
+          }
           </div>
         </header>
 

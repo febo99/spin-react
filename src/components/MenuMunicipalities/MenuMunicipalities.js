@@ -9,24 +9,30 @@ class MenuMunicipalities extends Component{
   checkedAll = this.props.municipalities.checkedAll;
   
   render(){
-    console.log(this.props)
     return(
       <Menu
             id="municipalitymenu"
+            classes={{ paper: styles.menuPaper }}
             anchorEl={this.props.anchorEl}
             keepMounted
             open={Boolean(this.props.anchorEl ? this.props.anchorEl.id === 'municipality' : false)}
             onClose={this.props.handleClose}
             >
-                <MenuItem onClick={this.props.muniChangeAll}>
+                <MenuItem className={styles.MenuItem} onClick={this.props.muniChangeAll}>
                   <Checkbox
+                  className={styles.MenuCheckbox}
                   checked={this.props.municipalities.checkedAll}
                   inputProps={{ 'arialabel': 'primary checkbox' }}
                   />Izberi vse
                   </MenuItem>
                 {
                 Object.keys(this.props.municipalities).map((item, index) => {
-                  if(item !== 'checkedAll')return <MenuItem id={item} key={index} onClick={this.props.muniChange}><Checkbox id={item} name={item} checked={this.props.municipalities[item]} inputProps={{ 'arialabel': 'primary checkbox' }}></Checkbox>{this.names[index]}</MenuItem>
+                  if(item !== 'checkedAll')return <MenuItem className={styles.MenuItem}
+                  id={item} key={index} onClick={this.props.muniChange}>
+                    <Checkbox className={styles.MenuCheckbox} id={item} name={item} checked={this.props.municipalities[item]} inputProps={{ 'arialabel': 'primary checkbox' }}>
+                      </Checkbox>
+                        {this.names[index]}
+                      </MenuItem>
                 })}
             </Menu>
             );
