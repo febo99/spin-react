@@ -14,12 +14,23 @@ class App extends Component{
     intervetions : []
   }
   componentDidMount(){
-    const api = 'https://spin3.sos112.si/javno/assets/data/lokacija.json';
-    fetch(api).then((response) => response.json())
-    .then(d => {
-        const finalItems = formatDate(d.value);
-        this.setState({ intervetions: finalItems });
-    });
+    const api = 'http://spin3.sos112.si/javno/assets/data/lokacija.json';
+    const proxy = 'https://cors-anywhere.herokuapp.com/';
+    fetch(proxy + api, {cors: 'no-cors'}).then((response) => response.json())
+      .then(d => {
+          const finalItems = formatDate(d.value);
+          this.setState({ intervetions: finalItems });
+      });
+    this.interval = setInterval(() =>{
+      fetch(proxy + api).then((response) => response.json())
+      .then(d => {
+          const finalItems = formatDate(d.value);
+          this.setState({ intervetions: finalItems });
+      });
+    }, 60000);
+  }
+  componentWillUnmount(){
+    clearInterval(this.interval);
   }
   render(){
     return (
@@ -28,7 +39,7 @@ class App extends Component{
           <h1 id="App-h1">SPIN 112</h1>
           <div className="App-content">
             {this.state.intervetions.map((d) => {
-              return <Tile type={d.intervencijaVrstaNaziv} 
+              return <Tile key={d.nastanekCas} type={d.intervencijaVrstaNaziv} 
               time={d.nastanekCas} 
               location={d.obcinaNaziv}
               content={d.besedilo}
