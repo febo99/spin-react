@@ -3,6 +3,7 @@
     color: #ffffff;
     width: 20%;
     padding: 1%;
+    height: 100%;
     border-radius: 20px;
     -webkit-box-shadow: 1px 0px 11px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 1px 0px 11px 0px rgba(0,0,0,0.75);
@@ -11,19 +12,28 @@
 }
 
 .TileHeader{
+    display: flex;
     text-align: left;
-    text-transform: capitalize;
-    font-size: 0.6rem;
+    text-transform: uppercase;
+    font-size: 0.5rem;
 }
 
 .TileContent{
     text-align: left;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
+}
+
+.TileMapIcon{
+    display: flex;
+    flex: 1;
+    width: 20%;
+    justify-content: flex-end;
+    align-items: center;
 }
 
 @media only screen and (max-width: 1200px) {
     .Tile{
-        width: 46%;
+        width: 29%;
     }
   }
   @media only screen and (max-width: 900px) {
