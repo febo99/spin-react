@@ -74,6 +74,7 @@ class MenuMunicipalities extends Component{
                       </Checkbox>
                         {this.names[index]}
                       </MenuItem>
+                  return null;
                 })}
             </Menu>
             );

@@ -336,7 +336,10 @@ class App extends Component{
                 location={d.obcinaNaziv}
                 content={d.besedilo}
                 mapLink={d.map}></Tile>
-              }})
+              }
+              return null;
+            })
+              
           }
           </div>
         </header>

@@ -29,6 +29,7 @@ class MenuInterventions extends Component{
                 {
                 Object.keys(this.props.intervetions).map((item,i) => {
                   if(item !== 'checkedAll')return <MenuItem style={{'backgroundColor':'#121212', 'color':'white'}} id={item} key={i} onClick={this.props.interventionChange}><Checkbox style={{'color':'white'}} id={item} name={item} checked={this.props.intervetions[item]} inputProps={{ 'arialabel': 'primary checkbox' }}></Checkbox>{this.names[i]}</MenuItem>
+                  return null
                 })}
             </Menu>
             );
