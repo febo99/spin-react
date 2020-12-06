@@ -10,19 +10,29 @@ const formatDate = (data) =>{
   })
   return data;
 }
+const formatDateLarge = (data) =>{
+  data.forEach((item) =>{
+    item.nastanekCas = (new Date(item.besediloList[0].datum).toLocaleString("sl-SL").replace(". ", ".").replace(". ", "."));
+    item.intervencijaVrstaNaziv = "VEČJI OBSEG";
+    item.besedilo = item.besediloList[0].besedilo;
+    item.map = 'https://www.google.com/maps/place/' + item.obcinaNaziv;
+  })
+  return data;
+}
 
 class App extends Component{
   state ={
     intervetions : [],
     intervetionsFilter : {
-      naravneNesrece: true,
-      drugeNesrece: true,
-      prometne: true,
-      pozari: true,
-      nevarne: true,
-      jedrski: true,
-      nus: true,
-      tehnicna: true,
+      naravnenesrece: true,
+      drugenesrece: true,
+      prometnanesreca: true,
+      pozareksplozija: true,
+      onesnazenjenesreceznevarnimisnovmi: true,
+      jedrskiindrugidogoki: true,
+      najdbenusmotnjeoskrbeinposkodbeobjektov: true,
+      tehnicnaindrugapomoc: true,
+      vecjiobseg: true,
       checkedAll: true,
     },
     
@@ -248,7 +258,21 @@ class App extends Component{
     newState[id] = item.target.checked;
     this.setState(newState);
   };
+
+  handleInterventionChange(item){
+    const id = item.target.id;
+    const newState = this.state.intervetionsFilter;
+    newState[id] = item.target.checked;
+    this.setState(newState);
+  }
   
+  handleInterventionChangeAll(){
+    const newState = this.state.intervetionsFilter;
+    const checked = this.state.intervetionsFilter.checkedAll;
+   Object.keys(this.state.intervetionsFilter).forEach((key)=> newState[key] = !checked);
+   this.setState(newState);
+  }
+
   handleMuniChangeAll(){
     const newState = this.state.municipalitiesFilter;
     const checked = this.state.municipalitiesFilter.checkedAll;
@@ -259,24 +283,37 @@ class App extends Component{
   update(){ this.handleChange.bind(this)};
 
   componentDidMount(){
-    const api = 'http://spin3.sos112.si/javno/assets/data/lokacija.json';
+    let finalItems = [];
+    const apiLocation = 'http://spin3.sos112.si/javno/assets/data/lokacija.json';
+    const apiLarge = 'https://spin3.sos112.si/javno/assets/data/vecjiObseg.json';
     const proxy = 'https://cors-anywhere.herokuapp.com/';
-    fetch(proxy + api, {cors: 'no-cors'}).then((response) => response.json())
+    fetch(proxy + apiLocation, {cors: 'no-cors'}).then((response) => response.json())
       .then(d => {
-          const finalItems = formatDate(d.value);
-          this.setState({ intervetions: finalItems });
+          finalItems.push(...formatDate(d.value));
+          fetch(proxy + apiLarge, {cors: 'no-cors'}).then((response1) => response1.json())
+        .then(d1 => {
+          finalItems.splice(0,...formatDateLarge(d1.value));
+            this.setState({ intervetions: finalItems });
+        });
       });
-    this.interval = setInterval(() =>{
-      fetch(proxy + api).then((response) => response.json())
+
+      
+    this.intervalLocation = setInterval(() =>{
+      finalItems = []
+      fetch(proxy + apiLocation, {cors: 'no-cors'}).then((response) => response.json())
       .then(d => {
-          const finalItems = formatDate(d.value);
-          this.setState({ intervetions: finalItems });
+          finalItems.push(...formatDate(d.value));
+          fetch(proxy + apiLarge, {cors: 'no-cors'}).then((response1) => response1.json())
+        .then(d1 => {
+          finalItems.splice(0,...formatDateLarge(d1.value));
+            this.setState({ intervetions: finalItems });
+        });
       });
     }, 60000);
   }
 
   componentWillUnmount(){
-    clearInterval(this.interval);
+    clearInterval(this.intervalLocation);
   }
 
   render(){
@@ -284,13 +321,17 @@ class App extends Component{
       <div className="App">
         <header className="App-header">
           <h1 id="App-h1">SPIN 112</h1>
-          <MenuBar municipalities={this.state.municipalitiesFilter} muniChange={this.handleMuniChange.bind(this)} muniChangeAll={this.handleMuniChangeAll.bind(this)} intervetionsType={this.state.intervetionsFilter}></MenuBar>
+          <MenuBar municipalities={this.state.municipalitiesFilter} muniChange={this.handleMuniChange.bind(this)} muniChangeAll={this.handleMuniChangeAll.bind(this)} interventionChange={this.handleInterventionChange.bind(this)} interventionChangeAll={this.handleInterventionChangeAll.bind(this)} intervetions={this.state.intervetionsFilter}></MenuBar>
           <div className="App-content">
             {this.state.intervetions.map((d) => {
               let muni = String(d.obcinaNaziv);
-              muni = muni.toLowerCase().replace(/\s/g, "",).replace(/\./g,"").replace(/\-/g,"").replace("š",'s').replace("č",'c').replace("ž",'z');
-              if(this.state.municipalitiesFilter[muni]){
-                return <Tile key={d.nastanekCas} type={d.intervencijaVrstaNaziv} 
+              let intervention = String(d.intervencijaVrstaNaziv);
+
+              muni = muni.toLowerCase().replace(/\s/g, "",).replace(/\./g,"").replace(/-/g,"").replace("š",'s').replace("č",'c').replace("ž",'z');
+              intervention = intervention.toLowerCase().replace(/\s/g, "",).replace(/,/g,"").replace(/š/g,'s').replace(/č/g,'c').replace(/ž/g,'z');
+
+              if(this.state.municipalitiesFilter[muni] && this.state.intervetionsFilter[intervention]){
+                return <Tile key={d.nastanekCas + d.obcinaNaziv} type={d.intervencijaVrstaNaziv} 
                 time={d.nastanekCas} 
                 location={d.obcinaNaziv}
                 content={d.besedilo}

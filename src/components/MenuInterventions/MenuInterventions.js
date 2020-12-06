@@ -1,60 +1,47 @@
-import React from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { MenuItem, Menu, Checkbox} from '@material-ui/core'
 import styles from './MenuInterventions.module.css';
 
-function MenuInterventions({anchorEl, handleClose}){
-  const names = ['NARAVNE NESREČE', 'DRUGE NESREČE', 'NESREČE V PROMETU', 'POŽAR,EKSPLOZIJA', 'ONESNAŽENJA, NESREČE Z NEVARNIMI SNOVMI'
-    ,'JEDRSKI IN DRUGI DOGODKI', 'NAJDBE NUS, MOTNJE OSKRBE IN POŠKODBE OBJEKTOV', 'TEHNIČNA IN DRUGA POMOČ']
-  const [state, setState] = React.useState({
-    naravneNesrece: true,
-    drugeNesrece: true,
-    prometne: true,
-    pozari: true,
-    nevarne: true,
-    jedrski: true,
-    nus: true,
-    tehnicna: true,
-    checkedAll: true,
-  });
+class MenuInterventions extends Component{
+  names = ['NARAVNE NESREČE', 'DRUGE NESREČE', 'NESREČE V PROMETU', 'POŽAR,EKSPLOZIJA', 'ONESNAŽENJA, NESREČE Z NEVARNIMI SNOVMI'
+    ,'JEDRSKI IN DRUGI DOGODKI', 'NAJDBE NUS, MOTNJE OSKRBE IN POŠKODBE OBJEKTOV', 'TEHNIČNA IN DRUGA POMOČ', 'VEČJI OBSEG']
 
 
-  const handleChange = React.useCallback((item) => {
-    const id = item.target.id;
-    state[id] = !state[id];
-    setState({...state});
-  },[]);
-  
-  const handleChangeAll = React.useCallback(() =>{
-   Object.keys(state).forEach((key)=> state[key] = !state.checkedAll)
-    setState({...state});
-  },[]);
-  
-  const update = handleChange.bind(this);
-  const { checkedAll } = state;
-  let i = 0;
+
+  render(){
   return(
       <Menu
             id="interventionsMenu"
-            anchorEl={anchorEl}
+            anchorEl={this.props.anchorEl}
             keepMounted
-            open={Boolean(anchorEl ? anchorEl.id === 'interventions' : false)}
-            onClose={handleClose}
+            classes={{ list: styles.menuPaper }}
+            open={Boolean(this.props.anchorEl ? this.props.anchorEl.id === 'interventions' : false)}
+            onClose={this.props.handleClose}
             >
-                <MenuItem onClick={handleChangeAll}>
+                <MenuItem style={{'backgroundColor':'#121212', 'color':'white'}} onClick={this.props.interventionChangeAll}>
                   <Checkbox
-                  checked={checkedAll}
+                  style={{'color':'white'}}
+                  checked={this.props.intervetions.checkedAll}
                   inputProps={{ 'arialabel': 'primary checkbox' }}
                   />Izberi vse
                   </MenuItem>
                 {
-                Object.keys(state).map((item) => {
-                  if(item !== 'checkedAll')return <MenuItem id={item} key={i} onClick={update}><Checkbox id={item} name={item} checked={state[item]} inputProps={{ 'arialabel': 'primary checkbox' }}></Checkbox>{names[i++]}</MenuItem>
+                Object.keys(this.props.intervetions).map((item,i) => {
+                  if(item !== 'checkedAll')return <MenuItem style={{'backgroundColor':'#121212', 'color':'white'}} id={item} key={i} onClick={this.props.interventionChange}><Checkbox style={{'color':'white'}} id={item} name={item} checked={this.props.intervetions[item]} inputProps={{ 'arialabel': 'primary checkbox' }}></Checkbox>{this.names[i]}</MenuItem>
                 })}
             </Menu>
             );
+          }
 }
 
-MenuInterventions.propTypes = {};
+MenuInterventions.propTypes = {
+  anchorEl: PropTypes.object,
+  handleClose: PropTypes.func,
+  interventionChange: PropTypes.func,
+  interventionChangeAll: PropTypes.func,
+  intervetions: PropTypes.object
+};
 
 MenuInterventions.defaultProps = {};
 

@@ -21,12 +21,12 @@ handleClose = () => this.setState({ anchorEl: null})
     const {anchorEl } = this.state;
     return(
       <div className={styles.MenuBar}>
-        <AppBar position='static'>
-          <Toolbar>
-            <Button color="inherit" id='municipality' aria-controls="municipality-menu" aria-haspopup="true" onClick={this.handleClick}>Obcine</Button>
-            <MenuMunicipalities  anchorEl={anchorEl} handleClose={this.handleClose} muniChange={this.props.muniChange} muniChangeAll={this.props.muniChangeAll} municipalities={this.props.municipalities}></MenuMunicipalities>
-            <MenuInterventions anchorEl={anchorEl} handleClose={this.handleClose}></MenuInterventions>
+        <AppBar position='static' style={{'backgroundColor':'#121212'}}>
+          <Toolbar color="red">
+            <Button color="inherit" id='municipality' aria-controls="municipality-menu" aria-haspopup="true" onClick={this.handleClick}>Občine</Button>
             <Button color="inherit" id='interventions' aria-controls="interventions-menu" aria-haspopup="true" onClick={this.handleClick}>Intervencije</Button>
+            <MenuMunicipalities  anchorEl={anchorEl} handleClose={this.handleClose} muniChange={this.props.muniChange} muniChangeAll={this.props.muniChangeAll} municipalities={this.props.municipalities}></MenuMunicipalities>
+            <MenuInterventions anchorEl={anchorEl} handleClose={this.handleClose} interventionChange={this.props.interventionChange} interventionChangeAll={this.props.interventionChangeAll} intervetions={this.props.intervetions}></MenuInterventions>
           </Toolbar>
         </AppBar>
     </div>
@@ -39,7 +39,10 @@ MenuBar.propTypes = {
   interventionsType: PropTypes.object,
   municipalities: PropTypes.object,
   muniChangeAll: PropTypes.func,
-  muniChange: PropTypes.func
+  muniChange: PropTypes.func,
+  interventionChange: PropTypes.func,
+  interventionChangeAll: PropTypes.func,
+  intervetions: PropTypes.object
 };
 
 MenuBar.defaultProps = {};

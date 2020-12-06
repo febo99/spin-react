@@ -11,7 +11,9 @@
     background-color: #121212;
     color: white;
 }
-
+.menuPaper{
+        background-color: #121212;
+    }
 .MenuItem:hover{
     background-color: #000000;
 }
