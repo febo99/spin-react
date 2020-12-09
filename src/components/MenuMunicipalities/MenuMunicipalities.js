@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { MenuItem, Menu, Checkbox} from '@material-ui/core'
-import styles from './MenuMunicipalities.module.css';
 import PropTypes from 'prop-types';
+import MenuMunicipalitiesItem from '../MenuMunicipalitiesItem/MenuMunicipalitiesItem';
+import styles from './MenuMunicipalities.module.css';
 
 class MenuMunicipalities extends Component{
   names = ['Ajdovščina','Ankaran','Apače','Beltinci',
@@ -48,7 +49,14 @@ class MenuMunicipalities extends Component{
   'Šmartno Pri Litiji','Šoštanj','Štore','Žalec','Železniki','Žetale','Žiri','Žirovnica','Žužemberk']
 
   checkedAll = this.props.municipalities.checkedAll;
-  
+  changeAll(){
+    this.props.muniChangeAll();
+  }
+  renderItems(){
+    return Object.keys(this.props.municipalities).map((item, index) => {
+      if(item !== 'checkedAll')return <MenuMunicipalitiesItem id={item} changeState={this.props.muniChange} muniState={this.props.municipalities[item]} muniName={this.names[index]}></MenuMunicipalitiesItem>
+      return null;
+    })}
   render(){
     return(
       <Menu
@@ -59,23 +67,14 @@ class MenuMunicipalities extends Component{
             open={Boolean(this.props.anchorEl ? this.props.anchorEl.id === 'municipality' : false)}
             onClose={this.props.handleClose}
             >
-                <MenuItem style={{'backgroundColor':'#121212', 'color':'white', }} onClick={this.props.muniChangeAll}>
+                <MenuItem style={{'backgroundColor':'#121212', 'color':'white', }} onClick={this.changeAll.bind(this)}>
                   <Checkbox
                   style={{'backgroundColor':'#121212', 'color':'white'}}
                   checked={this.props.municipalities.checkedAll}
                   inputProps={{ 'arialabel': 'primary checkbox' }}
                   />Izberi vse
                   </MenuItem>
-                {
-                Object.keys(this.props.municipalities).map((item, index) => {
-                  if(item !== 'checkedAll')return <MenuItem style={{'backgroundColor':'#121212', 'color':'white'}}
-                  id={item} key={index} onClick={this.props.muniChange}>
-                    <Checkbox style={{'backgroundColor':'#121212', 'color':'white'}} id={item} name={item} checked={this.props.municipalities[item]} inputProps={{ 'arialabel': 'primary checkbox' }}>
-                      </Checkbox>
-                        {this.names[index]}
-                      </MenuItem>
-                  return null;
-                })}
+                {this.renderItems()}
             </Menu>
             );
               }
