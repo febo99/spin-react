@@ -276,8 +276,8 @@ class App extends Component{
   handleMuniChangeAll(){
     const newState = this.state.municipalitiesFilter;
     const checked = this.state.municipalitiesFilter.checkedAll;
-   Object.keys(this.state.municipalitiesFilter).forEach((key)=> newState[key] = !checked);
-   this.setState(newState);
+    Object.keys(this.state.municipalitiesFilter).forEach((key)=> newState[key] = !checked);
+    this.setState(newState);
   };
   
   update(){ this.handleChange.bind(this)};
