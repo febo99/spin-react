@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { MenuItem, Menu, Checkbox} from '@material-ui/core'
+import { Menu} from '@material-ui/core'
 import MenuInterventionsItem from '../MenuInterventionsItem/MenuInterventionsItem';
 import styles from './MenuInterventions.module.css';
 
