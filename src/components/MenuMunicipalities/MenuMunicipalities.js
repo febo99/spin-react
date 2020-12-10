@@ -67,13 +67,7 @@ class MenuMunicipalities extends Component{
             open={Boolean(this.props.anchorEl ? this.props.anchorEl.id === 'municipality' : false)}
             onClose={this.props.handleClose}
             >
-                <MenuItem style={{'backgroundColor':'#121212', 'color':'white', }} onClick={this.changeAll.bind(this)}>
-                  <Checkbox
-                  style={{'backgroundColor':'#121212', 'color':'white'}}
-                  checked={this.props.municipalities.checkedAll}
-                  inputProps={{ 'arialabel': 'primary checkbox' }}
-                  />Izberi vse
-                  </MenuItem>
+                <MenuMunicipalitiesItem  changeState={this.changeAll.bind(this)} muniState={this.props.municipalities.checkedAll} muniName={"IZBERI VSE"}></MenuMunicipalitiesItem>
                 {this.renderItems()}
             </Menu>
             );
