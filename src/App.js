@@ -305,7 +305,7 @@ class App extends Component{
           finalItems.push(...formatDateLarge(d.value));
           fetch(proxy + apiLarge).then((response1) => response1.json())
         .then(d1 => {
-          finalItems.splice(0,...formatDate(d1.value));
+          finalItems.push(...formatDate(d1.value))
             this.setState({ intervetions: finalItems });
         });
       });
