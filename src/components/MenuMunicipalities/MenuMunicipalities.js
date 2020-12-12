@@ -54,7 +54,7 @@ class MenuMunicipalities extends Component{
   }
   renderItems(){
     return Object.keys(this.props.municipalities).map((item, index) => {
-      if(item !== 'checkedAll')return <MenuMunicipalitiesItem id={item} changeState={this.props.muniChange} muniState={this.props.municipalities[item]} muniName={this.names[index]}></MenuMunicipalitiesItem>
+      if(item !== 'checkedAll')return <MenuMunicipalitiesItem key={index} id={item} changeState={this.props.muniChange} muniState={this.props.municipalities[item]} muniName={this.names[index]}></MenuMunicipalitiesItem>
       return null;
     })}
   render(){
@@ -67,7 +67,7 @@ class MenuMunicipalities extends Component{
             open={Boolean(this.props.anchorEl ? this.props.anchorEl.id === 'municipality' : false)}
             onClose={this.props.handleClose}
             >
-                <MenuMunicipalitiesItem  changeState={this.changeAll.bind(this)} muniState={this.props.municipalities.checkedAll} muniName={"IZBERI VSE"}></MenuMunicipalitiesItem>
+                <MenuMunicipalitiesItem key='0' changeState={this.changeAll.bind(this)} muniState={this.props.municipalities.checkedAll} muniName={"IZBERI VSE"}></MenuMunicipalitiesItem>
                 {this.renderItems()}
             </Menu>
             );

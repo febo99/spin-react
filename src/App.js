@@ -287,12 +287,12 @@ class App extends Component{
     const apiLocation = 'http://spin3.sos112.si/javno/assets/data/lokacija.json';
     const apiLarge = 'https://spin3.sos112.si/javno/assets/data/vecjiObseg.json';
     const proxy = 'https://cors-anywhere.herokuapp.com/';
-    fetch(proxy + apiLocation, {cors: 'no-cors'}).then((response) => response.json())
+    fetch(proxy + apiLarge).then((response) => response.json())
       .then(d => {
-          finalItems.push(...formatDate(d.value));
-          fetch(proxy + apiLarge, {cors: 'no-cors'}).then((response1) => response1.json())
+          finalItems.push(...formatDateLarge(d.value));
+          fetch(proxy + apiLocation).then((response1) => response1.json())
         .then(d1 => {
-          finalItems.splice(0,...formatDateLarge(d1.value));
+          finalItems.push(...formatDate(d1.value))
             this.setState({ intervetions: finalItems });
         });
       });
@@ -300,12 +300,12 @@ class App extends Component{
       
     this.intervalLocation = setInterval(() =>{
       finalItems = []
-      fetch(proxy + apiLocation, {cors: 'no-cors'}).then((response) => response.json())
+      fetch(proxy + apiLarge).then((response) => response.json())
       .then(d => {
-          finalItems.push(...formatDate(d.value));
-          fetch(proxy + apiLarge, {cors: 'no-cors'}).then((response1) => response1.json())
+          finalItems.push(...formatDateLarge(d.value));
+          fetch(proxy + apiLarge).then((response1) => response1.json())
         .then(d1 => {
-          finalItems.splice(0,...formatDateLarge(d1.value));
+          finalItems.splice(0,...formatDate(d1.value));
             this.setState({ intervetions: finalItems });
         });
       });

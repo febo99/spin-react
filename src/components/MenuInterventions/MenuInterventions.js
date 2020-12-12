@@ -14,7 +14,7 @@ class MenuInterventions extends Component{
     
     renderItems(){
       return Object.keys(this.props.intervetions).map((item, index) => {
-        if(item !== 'checkedAll')return <MenuInterventionsItem id={item} changeState={this.props.interventionChange} muniState={this.props.intervetions[item]} muniName={this.names[index]}></MenuInterventionsItem>
+        if(item !== 'checkedAll')return <MenuInterventionsItem key={`intervetions ${index}`} id={item} changeState={this.props.interventionChange} muniState={this.props.intervetions[item]} muniName={this.names[index]}></MenuInterventionsItem>
         return null;
       })}
 
@@ -28,7 +28,7 @@ class MenuInterventions extends Component{
             open={Boolean(this.props.anchorEl ? this.props.anchorEl.id === 'interventions' : false)}
             onClose={this.props.handleClose}
             >
-                <MenuInterventionsItem  changeState={this.changeAll.bind(this)} muniState={this.props.intervetions.checkedAll} muniName={"IZBERI VSE"}></MenuInterventionsItem>
+                <MenuInterventionsItem key={'intervetions00'} changeState={this.changeAll.bind(this)} muniState={this.props.intervetions.checkedAll} muniName={"IZBERI VSE"}></MenuInterventionsItem>
                 {this.renderItems()}
             </Menu>
             );
