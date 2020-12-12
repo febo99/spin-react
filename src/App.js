@@ -303,7 +303,7 @@ class App extends Component{
       fetch(proxy + apiLarge).then((response) => response.json())
       .then(d => {
           finalItems.push(...formatDateLarge(d.value));
-          fetch(proxy + apiLarge).then((response1) => response1.json())
+          fetch(proxy + apiLocation).then((response1) => response1.json())
         .then(d1 => {
           finalItems.push(...formatDate(d1.value))
             this.setState({ intervetions: finalItems });
