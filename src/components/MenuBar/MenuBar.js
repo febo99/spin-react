@@ -16,6 +16,8 @@ handleClick = event =>{
   this.setState({ anchorEl: event.currentTarget })
 } 
 
+
+
 handleClose = () => this.setState({ anchorEl: null})
 
   render(){
@@ -26,6 +28,7 @@ handleClose = () => this.setState({ anchorEl: null})
           <Toolbar>
             <Button color="inherit" id='municipality' aria-controls="municipality-menu" aria-haspopup="true" onClick={this.handleClick}>Občine</Button>
             <Button color="inherit" id='interventions' aria-controls="interventions-menu" aria-haspopup="true" onClick={this.handleClick}>Intervencije</Button>
+            <Button color="inherit" id="mapToggle" onClick={this.props.mapChange}>Zemljevid</Button>
             <MenuMunicipalities  anchorEl={anchorEl}  handleClose={this.handleClose} muniChange={this.props.muniChange} muniChangeAll={this.props.muniChangeAll} municipalities={this.props.municipalities}></MenuMunicipalities>
             <MenuInterventions anchorEl={anchorEl} handleClose={this.handleClose} interventionChange={this.props.interventionChange} interventionChangeAll={this.props.interventionChangeAll} intervetions={this.props.intervetions}></MenuInterventions>
           </Toolbar>
@@ -43,7 +46,8 @@ MenuBar.propTypes = {
   muniChange: PropTypes.func,
   interventionChange: PropTypes.func,
   interventionChangeAll: PropTypes.func,
-  intervetions: PropTypes.object
+  intervetions: PropTypes.object,
+  mapChange: PropTypes.func
 };
 
 MenuBar.defaultProps = {};

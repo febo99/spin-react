@@ -1,6 +1,7 @@
 import './App.css';
 import Tile from './components/Tile/Tile';
 import MenuBar from './components/MenuBar/MenuBar';
+import MapPage from './components/MapPage/MapPage';
 import { Component } from 'react';
 
 const formatDate = (data) =>{
@@ -249,7 +250,14 @@ class App extends Component{
       zirovnica: true,
       zuzemberk: true,
       checkedAll: true,
-    }
+    },
+    mapOpen: false
+    
+  }
+
+  mapChange(){
+    this.setState({mapOpen: !this.state.mapOpen});
+    this.render();
   }
 
   handleMuniChange(item) {
@@ -316,30 +324,38 @@ class App extends Component{
     clearInterval(this.intervalLocation);
   }
 
+  renderInterventionsList(){
+    
+  }
+
   render(){
     return (
       <div className="App">
         <header className="App-header">
           <h1 id="App-h1">SPIN 112</h1>
-          <MenuBar municipalities={this.state.municipalitiesFilter} muniChange={this.handleMuniChange.bind(this)} muniChangeAll={this.handleMuniChangeAll.bind(this)} interventionChange={this.handleInterventionChange.bind(this)} interventionChangeAll={this.handleInterventionChangeAll.bind(this)} intervetions={this.state.intervetionsFilter}></MenuBar>
+          <MenuBar mapChange={this.mapChange.bind(this)} municipalities={this.state.municipalitiesFilter} muniChange={this.handleMuniChange.bind(this)} muniChangeAll={this.handleMuniChangeAll.bind(this)} interventionChange={this.handleInterventionChange.bind(this)} interventionChangeAll={this.handleInterventionChangeAll.bind(this)} intervetions={this.state.intervetionsFilter}></MenuBar>
           <div className="App-content">
-            {this.state.intervetions.map((d) => {
-              let muni = String(d.obcinaNaziv);
-              let intervention = String(d.intervencijaVrstaNaziv);
+            { 
+              this.state.mapOpen ? (
+              this.state.intervetions.map((d) => {
+                  let muni = String(d.obcinaNaziv);
+                  let intervention = String(d.intervencijaVrstaNaziv);
 
-              muni = muni.toLowerCase().replace(/\s/g, "",).replace(/\./g,"").replace(/-/g,"").replace("š",'s').replace("č",'c').replace("ž",'z');
-              intervention = intervention.toLowerCase().replace(/\s/g, "",).replace(/,/g,"").replace(/š/g,'s').replace(/č/g,'c').replace(/ž/g,'z');
+                  muni = muni.toLowerCase().replace(/\s/g, "",).replace(/\./g,"").replace(/-/g,"").replace("š",'s').replace("č",'c').replace("ž",'z');
+                  intervention = intervention.toLowerCase().replace(/\s/g, "",).replace(/,/g,"").replace(/š/g,'s').replace(/č/g,'c').replace(/ž/g,'z');
 
-              if(this.state.municipalitiesFilter[muni] && this.state.intervetionsFilter[intervention]){
-                return <Tile key={d.nastanekCas + d.obcinaNaziv} type={d.intervencijaVrstaNaziv} 
-                time={d.nastanekCas} 
-                location={d.obcinaNaziv}
-                content={d.besedilo}
-                mapLink={d.map}></Tile>
-              }
-              return null;
+                  if(this.state.municipalitiesFilter[muni] && this.state.intervetionsFilter[intervention]){
+                    return <Tile key={d.nastanekCas + d.obcinaNaziv} type={d.intervencijaVrstaNaziv} 
+                    time={d.nastanekCas} 
+                    location={d.obcinaNaziv}
+                    content={d.besedilo}
+                    mapLink={d.map}></Tile>
+                  }
+                  return null;
             })
-              
+            ):(
+              <MapPage intervetions={this.state.intervetions}></MapPage>
+            )
           }
           </div>
         </header>

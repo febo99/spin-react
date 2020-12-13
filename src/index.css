@@ -15,3 +15,15 @@ code {
 .MuiPaper-root{
   background-color: #121212;
 }
+
+.mapboxgl-popup,.mapboxgl-popup-content{
+  background-color: #121212;
+}
+
+.mapboxgl-popup-tip{
+  display: none;
+}
+
+.popup-text,.mapboxgl-popup-close-button{
+  color: white;
+}
